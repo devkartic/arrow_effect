@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<table>
+    <tbody>
+    <tr>
+        <td><input type="text" name="name_1" class="inputs"/></td>
+        <td><input type="text" name="name_2" class="inputs"/></td>
+        <td><input type="text" name="name_3" class="inputs"/></td>
+        <td><input type="text" name="name_4" class="inputs"/></td>
+        <td><input type="text" name="name_5" class="inputs"/></td>
+    </tr>
+    <tr>
+        <td><input type="text" name="name_6" class="inputs"/></td>
+        <td><input type="text" name="name_7" class="inputs"/></td>
+        <td><input type="text" name="name_8" class="inputs"/></td>
+        <td><input type="text" name="name_9" class="inputs"/></td>
+        <td><input type="text" name="name_10" class="inputs"/></td>
+    </tr>
+    <tr>
+        <td><input type="text" name="name_11" class="inputs"/></td>
+        <td><input type="text" name="name_12" class="inputs"/></td>
+        <td><input type="text" name="name_13" class="inputs"/></td>
+        <td><input type="text" name="name_14" class="inputs"/></td>
+        <td><input type="text" name="name_15" class="inputs"/></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<script>
+
+    $(document).ready(function () {
+        $('.inputs:first').focus();
+    });
+
+    $(document).on('keydown', '.inputs', function (e) {
+        var thisRow = $(this).closest('tr');
+        var thisColumn = $(this).closest('td');
+        var rowIndex = $(this).closest("tr").index(); // Get Row Index
+        var columnIndex = $(this).closest("td").index(); // Get Column Index
+        var keyCode = parseInt(e.keyCode);
+        if(keyCode===37){
+            thisColumn.prev().find('.inputs').focus();
+        }if(keyCode===38){
+            thisRow.prev().find('td:eq("'+columnIndex+'")').find('.inputs').focus();
+        } else if(keyCode===39){
+            thisColumn.next().find('.inputs').focus();
+        } else if(keyCode===40){
+            thisRow.next().find('td:eq("'+columnIndex+'")').find('.inputs').focus();
+        }
+    });
+
+
+</script>
+
+</body>
+</html>
